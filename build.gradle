@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile 'org.mybatis:mybatis:3.2.1'
+    compile 'postgresql:postgresql:9.1-901.jdbc4'
+    testCompile 'junit:junit:4.12'
+}
