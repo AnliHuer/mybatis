@@ -1,9 +1,7 @@
 package io.twu.yang.mapper;
 
-import io.twu.yang.Address;
+import io.twu.yang.domain.Address;
 import org.apache.ibatis.annotations.*;
-
-import java.util.HashMap;
 
 public interface AddressMapper {
 
@@ -16,9 +14,21 @@ public interface AddressMapper {
             @Result(property = "addressId", column = "address_id"),
             @Result(property = "streetName", column = "street_name")
     })
-    Address findAddressById(Integer addressId);
+    Address findAddressById(long addressId);
 
-    @Insert("insert into address(street_name) values(#{address.streetName})")
-    @Options(keyProperty = "address_id", useGeneratedKeys = true)
-    Integer insertRecord(HashMap<String, Object> stringAddress);
+    @Select("SELECT address_id, street_name FROM address where address_Id=#{addressId}")
+    @ConstructorArgs({
+            @Arg(id = true, column = "address_id", javaType = long.class),
+            @Arg(column = "street_name", javaType = String.class)
+    })
+    Address findAddressByIdUsingConstructor(long addressId);
+
+    @Select("SELECT address_id, street_name FROM address where address_Id=#{addressId}")
+    @ConstructorArgs({
+            @Arg(column = "street_name", javaType = String.class)
+    })
+    @Results(value = {
+            @Result(property = "addressId", column = "address_id"),
+    })
+    Address findAddressByIdUsingConstructorAndField(long addressId);
 }

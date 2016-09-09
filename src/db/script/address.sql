@@ -26,3 +26,4 @@ INSERT INTO
 account(account_name, address_id)
 VALUES
 ('yang', 1);
+
