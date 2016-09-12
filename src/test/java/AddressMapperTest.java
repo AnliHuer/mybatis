@@ -26,7 +26,6 @@ public class AddressMapperTest {
     }
 
     @Test
-    @Ignore(value = "only works when have the setAddress_id")
     public void shouldInsertIntoDataBaseSuccessfully() throws Exception {
         //given
         Address address = new Address();

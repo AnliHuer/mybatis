@@ -33,8 +33,7 @@ public class Address {
         this.addressId = addressId;
     }
 
-// using this method for showing the auto incr key
-//    public void setAddress_id(long addressId) {
-//        this.addressId = addressId;
-//    }
+    public void setAddress_id(long addressId) {
+        this.addressId = addressId;
+    }
 }
